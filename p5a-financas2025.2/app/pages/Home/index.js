@@ -1,10 +1,51 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import MovList from "../../components/MovList/MovList";
 
-export default function Home(){
-  return(
-    <View>
-      <Text>TELA HOME</Text>
+
+
+export default function Home({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>☰ Minhas movimentações</Text>
+
+      <View style={[styles.card, { backgroundColor: "#4d51e5" }]}>
+        <Text style={styles.cardLabel}>Saldo atual</Text>
+        <Text style={styles.cardValue}>R$ 1.314,70</Text>
+      </View>
+
+      <Text style={styles.sectionTitle}>📅 Últimas movimentações</Text>
+
+      <MovList type="despesa" value="35.30" />
+      <MovList type="receita" value="780.30" />
+      <MovList type="receita" value="50" />
+      <MovList type="despesa" value="155.90" />
+
+      <TouchableOpacity
+        style={styles.btn}
+        onPress={() => navigation.navigate("HomeAlert")}
+      >
+        <Text style={styles.btnText}>Abrir AlertBox</Text>
+      </TouchableOpacity>
     </View>
-  )
+  );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20, backgroundColor: "#fff" },
+  header: { fontSize: 18, marginBottom: 20 },
+  sectionTitle: { marginVertical: 20 },
+  card: {
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  cardLabel: { color: "#fff" },
+  cardValue: { fontSize: 22, fontWeight: "bold", color: "#fff" },
+  btn: {
+    backgroundColor: "#4d51e5",
+    padding: 12,
+    borderRadius: 8,
+    marginTop: 20,
+  },
+  btnText: { color: "#fff", textAlign: "center", fontWeight: "bold" }
+});

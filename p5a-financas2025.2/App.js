@@ -1,19 +1,22 @@
-import 'react-native-gesture-handler';
-import React from 'react';
-import { StatusBar } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { NavigationContainer } from '@react-navigation/native';
+import Home from "./app/pages/Home";
+import Entradas from "./app/pages/Entradas";
+import Saidas from "./app/pages/Saidas";
+import HomeAlert from "./app/pages/HomeAlert";
 
-import Routes from './app/routes';
-import AuthProvider from './app/context/auth';
+const Stack = createNativeStackNavigator();
 
-export default function App(){
-  return(
+export default function App() {
+  return (
     <NavigationContainer>
-      <AuthProvider>
-        <StatusBar backgroundColor="#F0F4FF" barStyle="dark-content" />
-        <Routes/>
-      </AuthProvider>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Entradas" component={Entradas} />
+        <Stack.Screen name="Saidas" component={Saidas} />
+        <Stack.Screen name="HomeAlert" component={HomeAlert} />
+      </Stack.Navigator>
     </NavigationContainer>
-  )
+  );
 }
