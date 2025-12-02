@@ -1,77 +1,58 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f0f0f7' },
+  container: {
+    flex: 1,
+    backgroundColor: '#F5F5F5'
+  },
+
   content: {
-    paddingBottom: 50,
+    paddingHorizontal: 20,
+    marginTop: 10
   },
-  balanceSection: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 20,
-    marginBottom: 20,
+
+  // --- CARDS LADO A LADO ---
+  rowCards: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 15,
   },
+
+  cardItem: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
+
+  // --- TÍTULO COM ÍCONE ---
+  sectionWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+    marginBottom: 10
+  },
+
+  sectionIcon: {
+    marginRight: 8,
+  },
+
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333',
-    marginLeft: 15,
-    marginTop: 15,
-    marginBottom: 10,
+    color: '#000',
   },
-  // --- Estilos do Calendário ---
-  calendarContainer: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    marginHorizontal: 15,
-    padding: 15,
-    marginBottom: 20,
-    elevation: 1,
-  },
-  monthTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-  daysRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 10,
-  },
-  dayHeader: {
-    fontSize: 12,
-    color: '#888',
-    width: '12%', 
-    textAlign: 'center',
-  },
-  numberGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  dayNumber: {
-    width: '14.28%', // 100% / 7 dias
-    textAlign: 'center',
-    paddingVertical: 8,
-    fontSize: 16,
-    color: '#333',
-  },
-  highlightedDay: {
-    backgroundColor: '#F44336', // Vermelho (Dia 14)
-    color: '#fff',
-    borderRadius: 50,
-  },
+
+  // BOTÃO FILTRAR
   filterButton: {
-    backgroundColor: '#4169E1',
-    padding: 15,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginHorizontal: 15,
-    marginBottom: 20,
+    marginTop: 20,
+    marginBottom: 25,
+    backgroundColor: '#4B7BEC',
+    padding: 12,
+    borderRadius: 8
   },
+
   filterButtonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
+    color: '#FFF',
+    textAlign: 'center',
+    fontWeight: 'bold'
   },
 });

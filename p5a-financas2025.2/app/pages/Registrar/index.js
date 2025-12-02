@@ -1,57 +1,71 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { styles } from "./styles";
+import Icon from "react-native-vector-icons/Feather";
 
-import Header from '../../components/Header';
-import RegisterTypes from '../../components/RegisterTypes'; 
-import { styles } from './styles'; // Importando os estilos
-
-export default function NewScreen() {
-  const navigation = useNavigation();
-  const [name, setName] = useState('');
-  const [value, setValue] = useState('');
-  const [type, setType] = useState('receita'); 
-
-  const handleRegister = () => {
-    console.log('Novo Registro:', { name, value, type });
-    navigation.navigate('Home'); 
-  };
+export default function Registrar() {
+  const [type, setType] = useState("receita");
 
   return (
     <View style={styles.container}>
-      <Header 
-        title="Registrando" 
-        showBackButton={false} 
-        onMenuPress={() => navigation.openDrawer()} 
+      
+      <Text style={styles.header}>☰ Registrar movimentação</Text>
+
+      {/* CARD */}
+      <View style={styles.card}>
+        <Text style={styles.cardLabel}>Nova movimentação</Text>
+      </View>
+
+      {/* INPUT NOME */}
+      <Text style={styles.label}>Descrição</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Ex: Salário, mercado, venda..."
+        placeholderTextColor="#999"
       />
 
-      <ScrollView style={styles.formContainer} showsVerticalScrollIndicator={false}>
-        <Text style={styles.formTitle}>Registrar</Text>
+      {/* INPUT VALOR */}
+      <Text style={styles.label}>Valor</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Ex: 150.00"
+        placeholderTextColor="#999"
+        keyboardType="numeric"
+      />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Nome (Ex: Salário, Aluguel)"
-          placeholderTextColor="#999"
-          value={name}
-          onChangeText={setName}
-        />
+      {/* SELECT TIPO */}
+      <Text style={styles.label}>Tipo</Text>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Valor desejado"
-          placeholderTextColor="#999"
-          keyboardType="numeric"
-          value={value}
-          onChangeText={setValue}
-        />
-
-        <RegisterTypes type={type} onSelect={setType} />
-
-        <TouchableOpacity style={styles.registerButton} onPress={handleRegister}>
-          <Text style={styles.registerButtonText}>Registrar</Text>
+      <View style={styles.typeContainer}>
+        {/* RECEITA */}
+        <TouchableOpacity
+          style={[
+            styles.typeButton,
+            type === "receita" && styles.activeReceita,
+          ]}
+          onPress={() => setType("receita")}
+        >
+          <Icon name="arrow-up" size={20} color="#12a454" />
+          <Text style={styles.typeTextReceita}>Receita</Text>
         </TouchableOpacity>
-        
-      </ScrollView>
+
+        {/* DESPESA */}
+        <TouchableOpacity
+          style={[
+            styles.typeButton,
+            type === "despesa" && styles.activeDespesa,
+          ]}
+          onPress={() => setType("despesa")}
+        >
+          <Icon name="arrow-down" size={20} color="#e83f5b" />
+          <Text style={styles.typeTextDespesa}>Despesa</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* BOTÃO SALVAR */}
+      <TouchableOpacity style={styles.buttonSave}>
+        <Text style={styles.buttonSaveText}>Salvar</Text>
+      </TouchableOpacity>
     </View>
   );
 }

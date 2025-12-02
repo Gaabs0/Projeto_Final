@@ -1,22 +1,23 @@
-import { Icon } from '@react-native-vector-icons/feather';
-import { useNavigation } from '@react-navigation/native';
+import React from "react";
+import { View, TouchableOpacity, Text } from "react-native";
+import Icon from "react-native-vector-icons/Feather";
+import { useNavigation } from "@react-navigation/native";
+import { styles } from "./styles";
 
+export default function Header({ title }) {
+  const navigation = useNavigation();
 
+  return (
+    <View style={styles.container}>
+      
+      <TouchableOpacity
+        style={styles.menuButton}
+        onPress={() => navigation.navigate("SignIn")}
+      >
+        <Icon name="menu" size={28} color="#000" />
+      </TouchableOpacity>
 
-export default function Header({ title }){
-    const navigation = useNavigation();
-
-    return(
-        <Container>
-            <ButtonMenu>
-
-            </ButtonMenu>
-
-            { title && (
-                <Title>
-                    {title}
-                </Title>
-            )}
-        </Container>
-    )
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  );
 }

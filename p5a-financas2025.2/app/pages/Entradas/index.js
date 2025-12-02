@@ -1,34 +1,24 @@
-import { View, Text, StyleSheet } from "react-native";
-import MovList from "../../components/MovList/index";
-
+import React from "react";
+import { View, Text } from "react-native";
+import MovList from "../../components/MovList";
+import { styles } from "./styles";
 
 export default function Entradas() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>☰ Minhas movimentações</Text>
 
-      <View style={[styles.card, { backgroundColor: "#1ac05e" }]}>
+      <View style={styles.card}>
         <Text style={styles.cardLabel}>Entradas de hoje</Text>
         <Text style={styles.cardValue}>R$ 1.200</Text>
       </View>
 
       <Text style={styles.sectionTitle}>📅 Últimas movimentações</Text>
 
-      <MovList type="despesa" value="35.30" />
-      <MovList type="receita" value="780.30" />
-      <MovList type="receita" value="50" />
-      <MovList type="despesa" value="155.90" />
+      <MovList data={{ id: "1", type: "despesa", value: "35.30", label: "Despesa Teste" }} />
+      <MovList data={{ id: "2", type: "receita", value: "780.30", label: "Receita Teste" }} />
+      <MovList data={{ id: "3", type: "receita", value: "50", label: "Bonus" }} />
+      <MovList data={{ id: "4", type: "despesa", value: "155.90", label: "Despesa Teste 2" }} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#fff" },
-  header: { fontSize: 18, marginBottom: 20 },
-  card: {
-    padding: 20, borderRadius: 10, marginBottom: 10,
-  },
-  cardLabel: { color: "#fff" },
-  cardValue: { fontSize: 22, fontWeight: "bold", color: "#fff" },
-  sectionTitle: { marginVertical: 20 }
-});

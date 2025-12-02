@@ -2,27 +2,51 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#eef1f7",
-    marginBottom: 12,
-    borderRadius: 8,
-    padding: 14,
+    backgroundColor: "#f0f2f5",
+    padding: 15,
+    borderRadius: 12,
+    marginBottom: 10,
   },
+
+  row: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+  },
+
+  /* BADGE */
   badge: {
-    color: "#fff",
-    paddingVertical: 3,
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 10,
-    borderRadius: 5,
-    marginBottom: 5,
+    paddingVertical: 4,
+    borderRadius: 6,
+    marginBottom: 6,
     alignSelf: "flex-start",
   },
-  receita: {
-    backgroundColor: "#0cc977",
+
+  badgeReceita: {
+    backgroundColor: "#12a454",
   },
-  despesa: {
-    backgroundColor: "#e54a48",
+
+  badgeDespesa: {
+    backgroundColor: "#e83f5b",
   },
-  value: {
-    fontSize: 17,
+
+  badgeText: {
+    color: "#fff",
     fontWeight: "bold",
-  }
+    fontSize: 13,
+    marginLeft: 5,
+  },
+
+  value: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+
+  date: {
+    marginTop: 4,
+    fontSize: 13,
+    color: "#777",
+  },
 });

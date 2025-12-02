@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Platform } from 'react-native';
+import { Platform, KeyboardAvoidingView, Alert } from 'react-native';
 
 import { 
   BackGround, 
@@ -16,58 +16,75 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../context/auth';
 
-export default function SignIn(){
+export default function SignIn() {
   const navigation = useNavigation();
-
   const { signIn } = useContext(AuthContext);
 
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  function handleLogin(){
+  function handleLogin() {
+    if (!email || !password) {
+      Alert.alert("Atenção", "Preencha todos os campos!");
+      return;
+    }
+
     signIn(email, password);
   }
-  
-  return(
+
+  return (
     <BackGround>
 
-      <Container
-        behavior={Platform.OS === 'ios' ? 'padding' : ''}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         enabled
+        style={{ flex: 1 }}
       >
-        <Logo
-          source={require('../../../assets/Logo.png')}
-        />
 
-        <AreaInput>
-          <Input
-            value = {email}
-            placeholder="Email"
-            onChangeText={ (text) => setEmail(text)}
-          />
-        </AreaInput>
+        <Container>
 
-        <AreaInput>
-          <Input
-            value={password}
-            placeholder="Senha"
-            onChangeText={ (text) => setPassword(text) }
+          {/* LOGO */}
+          <Logo source={require('../../../assets/Logo.png')} />
 
-          />
-        </AreaInput>
+          {/* EMAIL */}
+          <AreaInput>
+            <Input
+              placeholder="Email"
+              placeholderTextColor="#999"
+              autoCorrect={false}
+              autoCapitalize="none"
+              keyboardType="email-address"
+              value={email}
+              onChangeText={setEmail}
+            />
+          </AreaInput>
 
-        <SubmitButton activeOpacity={0.8}
-          onPress={handleLogin}
-        >
-          <SubmitText>Acessar</SubmitText>
-        </SubmitButton>
+          {/* SENHA */}
+          <AreaInput>
+            <Input
+              placeholder="Senha"
+              placeholderTextColor="#999"
+              secureTextEntry={true}
+              autoCorrect={false}
+              autoCapitalize="none"
+              value={password}
+              onChangeText={setPassword}
+            />
+          </AreaInput>
 
-        <Link onPress={ () => navigation.navigate('SignUp') }>
-          <LinkText>Criar uma conta gratuita</LinkText>
-        </Link>
+          {/* LOGIN */}
+          <SubmitButton activeOpacity={0.8} onPress={handleLogin}>
+            <SubmitText>Acessar</SubmitText>
+          </SubmitButton>
 
-      </Container>
+          {/* LINK CRIAR CONTA */}
+          <Link onPress={() => navigation.navigate('SignUp')}>
+            <LinkText>Criar uma conta gratuita</LinkText>
+          </Link>
 
+        </Container>
+
+      </KeyboardAvoidingView>
     </BackGround>
-  )
+  );
 }

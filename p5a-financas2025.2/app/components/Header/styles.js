@@ -1,23 +1,23 @@
-import styled from 'styled-components/native';
+import { StyleSheet } from "react-native";
 
-export const Container = styled.SafeAreaView`
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 30px;
-  margin-left: 15px;
-  margin-bottom: 15px;
-  width: 100%;
-  max-height: 60px;
-`;
+export const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: 60,
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#F5F5F5"
+  },
 
-export const Title = styled.Text`
-  font-size: 22px;
-  margin-left: 8px;
-`;
+  menuButton: {
+    marginRight: 10,
+    padding: 5,
+  },
 
-export const ButtonMenu = styled.TouchableOpacity`
-  justify-content: center;
-  align-items: center;
-`;
-
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#000",
+  },
+});
