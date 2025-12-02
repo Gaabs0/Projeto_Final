@@ -16,7 +16,6 @@ export default function MovList({ data, onDelete }) {
     >
       <View style={styles.row}>
 
-        {/* BADGE (EM CIMA) */}
         <View>
           <View style={[
             styles.badge,
@@ -32,7 +31,6 @@ export default function MovList({ data, onDelete }) {
             </Text>
           </View>
 
-          {/* VALOR (EMBAIXO) */}
           <Text
             style={[
               styles.value,

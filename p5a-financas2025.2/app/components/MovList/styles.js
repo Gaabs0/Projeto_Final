@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
 
-  /* BADGE */
+
   badge: {
     flexDirection: "row",
     alignItems: "center",

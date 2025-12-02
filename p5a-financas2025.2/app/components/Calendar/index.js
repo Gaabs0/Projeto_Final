@@ -8,25 +8,24 @@ export default function Calendar() {
   const [currentYear, setCurrentYear] = useState(2021);
   const [selectedDay, setSelectedDay] = useState(14);
 
-  // NOMES DOS MESES
+
   const months = [
     "Janeiro","Fevereiro","Março","Abril","Maio","Junho",
     "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
   ];
 
-  // PEGAR DIAS DO CALENDÁRIO
   const getCalendarDays = () => {
     const firstDay = new Date(currentYear, currentMonth, 1).getDay();
     const lastDay = new Date(currentYear, currentMonth + 1, 0).getDate();
 
     let daysArray = [];
 
-    // Dias do mês anterior
+   
     for (let i = 0; i < firstDay; i++) {
       daysArray.push({ day: "", disabled: true });
     }
 
-    // Dias do mês atual
+   
     for (let i = 1; i <= lastDay; i++) {
       daysArray.push({ day: i, disabled: false });
     }
@@ -36,8 +35,6 @@ export default function Calendar() {
 
   return (
     <View style={styles.container}>
-
-      {/* CABEÇALHO */}
       <View style={styles.header}>
         <TouchableOpacity 
           onPress={() => setCurrentMonth(prev => prev - 1)}
@@ -56,14 +53,12 @@ export default function Calendar() {
         </TouchableOpacity>
       </View>
 
-      {/* DIAS DA SEMANA */}
       <View style={styles.weekRow}>
         {["DO", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"].map((d) => (
           <Text key={d} style={styles.weekText}>{d}</Text>
         ))}
       </View>
-
-      {/* GRID DE DIAS */}
+      
       <View style={styles.daysGrid}>
         {getCalendarDays().map((item, index) => (
           <TouchableOpacity

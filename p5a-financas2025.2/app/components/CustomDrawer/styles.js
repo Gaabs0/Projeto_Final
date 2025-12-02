@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     paddingVertical: 20,
-    backgroundColor: "#FFF",  // sem azul atrás da logo
+    backgroundColor: "#FFF", 
     marginBottom: 20,
   },
 
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 20,
     fontWeight: "600",
-    color: "#000",   // texto preto, elegante
+    color: "#000",   
   },
 
   menuItem: {
@@ -30,24 +30,23 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
   },
 
-  // 🔵 ITEM ATIVO
+
   menuItemActive: {
     backgroundColor: "#3b3dbf",
   },
 
-  // ⚪ ITEM INATIVO (SEM BORDA)
+  
   menuItemInactive: {
     backgroundColor: "#FFF",
   },
 
-  // TEXTO ATIVO = BRANCO
+ 
   menuTextActive: {
     color: "#FFF",
     fontSize: 18,
     fontWeight: "600",
   },
 
-  // TEXTO INATIVO = PRETO (não mais azul!)
   menuTextInactive: {
     color: "#000",
     fontSize: 18,

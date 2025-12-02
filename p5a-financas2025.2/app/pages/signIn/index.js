@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { Platform, KeyboardAvoidingView, Alert } from 'react-native';
-
+import React, { useState } from 'react';
+import { Platform } from 'react-native';
 import { 
   BackGround, 
   Container, 
@@ -14,77 +13,66 @@ import {
 } from './styles';
 
 import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../../context/auth';
 
 export default function SignIn() {
-  const navigation = useNavigation();
-  const { signIn } = useContext(AuthContext);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigation = useNavigation();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function handleLogin() {
-    if (!email || !password) {
-      Alert.alert("Atenção", "Preencha todos os campos!");
-      return;
-    }
 
-    signIn(email, password);
+    // Aqui entraria a verificação de login se existisse AuthContext
+
+    // DIRECIONA PARA HOME APÓS LOGAR
+    navigation.replace("HomeDrawer");
   }
 
   return (
     <BackGround>
 
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      <Container
+        behavior={Platform.OS === 'ios' ? 'padding' : ''}
         enabled
-        style={{ flex: 1 }}
       >
+        
+        {/* LOGO */}
+        <Logo source={require('../../../assets/Logo.png')} />
 
-        <Container>
+        {/* EMAIL */}
+        <AreaInput>
+          <Input
+            placeholder="Email"
+            placeholderTextColor="#999"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+        </AreaInput>
 
-          {/* LOGO */}
-          <Logo source={require('../../../assets/Logo.png')} />
+        {/* SENHA */}
+        <AreaInput>
+          <Input
+            placeholder="Senha"
+            placeholderTextColor="#999"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+        </AreaInput>
 
-          {/* EMAIL */}
-          <AreaInput>
-            <Input
-              placeholder="Email"
-              placeholderTextColor="#999"
-              autoCorrect={false}
-              autoCapitalize="none"
-              keyboardType="email-address"
-              value={email}
-              onChangeText={setEmail}
-            />
-          </AreaInput>
+        {/* BOTÃO ACESSAR */}
+        <SubmitButton activeOpacity={0.7} onPress={handleLogin}>
+          <SubmitText>Acessar</SubmitText>
+        </SubmitButton>
 
-          {/* SENHA */}
-          <AreaInput>
-            <Input
-              placeholder="Senha"
-              placeholderTextColor="#999"
-              secureTextEntry={true}
-              autoCorrect={false}
-              autoCapitalize="none"
-              value={password}
-              onChangeText={setPassword}
-            />
-          </AreaInput>
+        {/* LINK PARA CADASTRO */}
+        <Link onPress={() => navigation.navigate("SignUp")}>
+          <LinkText>Criar uma conta gratuita</LinkText>
+        </Link>
 
-          {/* LOGIN */}
-          <SubmitButton activeOpacity={0.8} onPress={handleLogin}>
-            <SubmitText>Acessar</SubmitText>
-          </SubmitButton>
+      </Container>
 
-          {/* LINK CRIAR CONTA */}
-          <Link onPress={() => navigation.navigate('SignUp')}>
-            <LinkText>Criar uma conta gratuita</LinkText>
-          </Link>
-
-        </Container>
-
-      </KeyboardAvoidingView>
     </BackGround>
   );
 }

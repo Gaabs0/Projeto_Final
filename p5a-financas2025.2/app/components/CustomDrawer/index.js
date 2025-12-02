@@ -16,18 +16,17 @@ export default function CustomDrawer(props) {
   return (
     <DrawerContentScrollView {...props}>
 
-      {/* LOGO SEM FUNDO AZUL */}
+     
       <View style={styles.header}>
         <Image 
           source={require("../../../assets/Logo.png")} 
           style={styles.logo}
         />
 
-        {/* BEM-VINDO */}
         <Text style={styles.welcome}>Bem-vindo!</Text>
       </View>
 
-      {/* MENU */}
+    
       {menuItems.map((item, index) => {
         const isActive = index === currentRouteIndex;
 
