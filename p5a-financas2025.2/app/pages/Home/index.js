@@ -2,19 +2,18 @@ import React, { useState } from 'react';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/Feather";
-import Toast from "react-native-toast-message";
-
 
 // COMPONENTES
-import Header from '../../components/Header/index.js';
-import BalanceItem from '../../components/BalanceItem/index.js';
-import MovList from '../../components/MovList/index.js';
-import HomeAlert from '../HomeAlert/index.js';
+import Header from '../../components/Header';
+import BalanceItem from '../../components/BalanceItem';
+import MovList from '../../components/MovList';
+import HomeAlert from '../HomeAlert';
+import Calendar from '../../components/Calendar';
 
 // STYLES
 import { styles } from './styles';
 
-// LISTA FALSA
+// LISTA DE EXEMPLO
 const INITIAL_MOVEMENTS = [
   { id: '1', label: 'Despesa', value: '35.30', type: 'despesa' },
   { id: '2', label: 'Receita', value: '780.30', type: 'receita' },
@@ -29,23 +28,12 @@ export default function Home() {
   const [isAlertVisible, setAlertVisible] = useState(false);
   const [selectedMovementId, setSelectedMovementId] = useState(null);
 
-  // QUANDO O USUÁRIO SEGURA UM ITEM
+  // ALERTA PARA DELETAR ITEM
   const handleLongPressMovement = (id) => {
-  Toast.show({
-    type: "info",
-    text1: "Atenção",
-    text2: "Você tem certeza que deseja deletar esse item?",
-    position: "top",
-    visibilityTime: 2500,
-  });
+    setSelectedMovementId(id);
+    setAlertVisible(true);
+  };
 
-  // ainda abre o modal para confirmar
-  setSelectedMovementId(id);
-  setAlertVisible(true);
-};
-
-
-  // DELETAR ITEM
   const handleDeleteMovement = () => {
     setMovements(prev => prev.filter(item => item.id !== selectedMovementId));
     setAlertVisible(false);
@@ -54,11 +42,12 @@ export default function Home() {
   return (
     <View style={styles.container}>
       
+      {/* HEADER */}
       <Header title="Minhas movimentações" />
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
 
-        {/* CARDS: SALDO, ENTRADA E SAÍDA */}
+        {/* CARDS DO TOPO */}
         <View style={styles.rowCards}>
 
           <View style={styles.cardItem}>
@@ -93,7 +82,7 @@ export default function Home() {
           <Text style={styles.sectionTitle}>Últimas movimentações</Text>
         </View>
 
-        {/* LISTA */}
+        {/* LISTA DE MOVIMENTOS */}
         {movements.map(item => (
           <MovList 
             key={item.id}
@@ -102,6 +91,9 @@ export default function Home() {
           />
         ))}
 
+        {/* CALENDÁRIO NOVO (IGUAL AO PRINT) */}
+        <Calendar />
+
         {/* BOTÃO FILTRAR */}
         <TouchableOpacity style={styles.filterButton}>
           <Text style={styles.filterButtonText}>Filtrar</Text>
@@ -109,7 +101,7 @@ export default function Home() {
 
       </ScrollView>
 
-      {/* ALERTA DE DELETAR */}
+      {/* MODAL DE ALERTA */}
       <HomeAlert 
         isVisible={isAlertVisible}
         onClose={() => setAlertVisible(false)}

@@ -1,50 +1,37 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import Header from "../../components/Header";
 import { styles } from "./styles";
-import Icon from "react-native-vector-icons/Feather";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Perfil() {
-  const [nome, setNome] = useState("Carlos Gabriel");
-  const [email, setEmail] = useState("carlos@email.com");
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-
+      
       {/* HEADER */}
-      <Text style={styles.header}>☰ Meu Perfil</Text>
+      <Header title="Meu perfil" />
 
-      {/* CARD SUPERIOR */}
-      <View style={styles.card}>
-        <Icon name="user" size={40} color="#fff" />
-        <Text style={styles.cardName}>{nome}</Text>
-        <Text style={styles.cardEmail}>{email}</Text>
+      <View style={styles.content}>
+        
+        {/* TEXTO PRINCIPAL */}
+        <Text style={styles.welcomeText}>Bem vindo de volta</Text>
+
+        {/* BOTÃO REGISTRAR GASTOS */}
+        <TouchableOpacity 
+          style={styles.registerButton}
+          onPress={() => navigation.navigate("Registrar")}
+        >
+          <Text style={styles.registerText}>Registrar gastos</Text>
+        </TouchableOpacity>
+
+        {/* BOTÃO SAIR */}
+        <TouchableOpacity style={styles.logoutButton}>
+          <Text style={styles.logoutText}>Sair</Text>
+        </TouchableOpacity>
+
       </View>
-
-      {/* FORMULÁRIO */}
-      <Text style={styles.label}>Nome</Text>
-      <TextInput
-        style={styles.input}
-        value={nome}
-        onChangeText={setNome}
-      />
-
-      <Text style={styles.label}>E-mail</Text>
-      <TextInput
-        style={styles.input}
-        value={email}
-        onChangeText={setEmail}
-      />
-
-      {/* BOTÃO SALVAR */}
-      <TouchableOpacity style={styles.buttonSave}>
-        <Text style={styles.buttonSaveText}>Salvar alterações</Text>
-      </TouchableOpacity>
-
-      {/* BOTÃO SAIR */}
-      <TouchableOpacity style={styles.buttonLogout}>
-        <Text style={styles.buttonLogoutText}>Sair</Text>
-      </TouchableOpacity>
-
     </View>
   );
 }

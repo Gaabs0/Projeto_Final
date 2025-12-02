@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { styles } from "./styles";
 import Icon from "react-native-vector-icons/Feather";
+import Header from "../../components/Header";
+import { styles } from "./styles";
 
 export default function Registrar() {
   const [type, setType] = useState("receita");
@@ -9,63 +10,82 @@ export default function Registrar() {
   return (
     <View style={styles.container}>
       
-      <Text style={styles.header}>☰ Registrar movimentação</Text>
+      {/* HEADER */}
+      <Header title="Registrando" />
 
-      {/* CARD */}
-      <View style={styles.card}>
-        <Text style={styles.cardLabel}>Nova movimentação</Text>
-      </View>
+      <View style={styles.content}>
+        <Text style={styles.title}>Registrar</Text>
 
-      {/* INPUT NOME */}
-      <Text style={styles.label}>Descrição</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Ex: Salário, mercado, venda..."
-        placeholderTextColor="#999"
-      />
+        {/* INPUT NOME */}
+        <TextInput
+          style={styles.input}
+          placeholder="Nome"
+          placeholderTextColor="#999"
+        />
 
-      {/* INPUT VALOR */}
-      <Text style={styles.label}>Valor</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Ex: 150.00"
-        placeholderTextColor="#999"
-        keyboardType="numeric"
-      />
+        {/* INPUT VALOR */}
+        <TextInput
+          style={styles.input}
+          placeholder="Valor desejado"
+          placeholderTextColor="#999"
+          keyboardType="numeric"
+        />
 
-      {/* SELECT TIPO */}
-      <Text style={styles.label}>Tipo</Text>
+        {/* BOTÕES RECEITA / DESPESA */}
+        <View style={styles.typeContainer}>
 
-      <View style={styles.typeContainer}>
-        {/* RECEITA */}
-        <TouchableOpacity
-          style={[
-            styles.typeButton,
-            type === "receita" && styles.activeReceita,
-          ]}
-          onPress={() => setType("receita")}
-        >
-          <Icon name="arrow-up" size={20} color="#12a454" />
-          <Text style={styles.typeTextReceita}>Receita</Text>
+          <TouchableOpacity
+            style={[
+              styles.typeButton,
+              type === "receita" && styles.typeButtonActive
+            ]}
+            onPress={() => setType("receita")}
+          >
+            <Icon
+              name="arrow-up"
+              size={18}
+              color={type === "receita" ? "#0B3B91" : "#000"}
+            />
+            <Text
+              style={[
+                styles.typeText,
+                type === "receita" && styles.typeTextActive
+              ]}
+            >
+              Receita
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[
+              styles.typeButton,
+              type === "despesa" && styles.typeButtonActive
+            ]}
+            onPress={() => setType("despesa")}
+          >
+            <Icon
+              name="arrow-down"
+              size={18}
+              color={type === "despesa" ? "#0B3B91" : "#000"}
+            />
+            <Text
+              style={[
+                styles.typeText,
+                type === "despesa" && styles.typeTextActive
+              ]}
+            >
+              Despesa
+            </Text>
+          </TouchableOpacity>
+
+        </View>
+
+        {/* BOTÃO REGISTRAR */}
+        <TouchableOpacity style={styles.submitButton}>
+          <Text style={styles.submitText}>Registrar</Text>
         </TouchableOpacity>
 
-        {/* DESPESA */}
-        <TouchableOpacity
-          style={[
-            styles.typeButton,
-            type === "despesa" && styles.activeDespesa,
-          ]}
-          onPress={() => setType("despesa")}
-        >
-          <Icon name="arrow-down" size={20} color="#e83f5b" />
-          <Text style={styles.typeTextDespesa}>Despesa</Text>
-        </TouchableOpacity>
       </View>
-
-      {/* BOTÃO SALVAR */}
-      <TouchableOpacity style={styles.buttonSave}>
-        <Text style={styles.buttonSaveText}>Salvar</Text>
-      </TouchableOpacity>
     </View>
   );
 }

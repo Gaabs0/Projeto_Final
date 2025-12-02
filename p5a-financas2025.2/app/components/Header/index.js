@@ -10,9 +10,9 @@ export default function Header({ title }) {
   return (
     <View style={styles.container}>
       
-      <TouchableOpacity
+      <TouchableOpacity 
         style={styles.menuButton}
-        onPress={() => navigation.navigate("SignIn")}
+        onPress={() => navigation.openDrawer()}
       >
         <Icon name="menu" size={28} color="#000" />
       </TouchableOpacity>

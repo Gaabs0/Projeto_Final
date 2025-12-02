@@ -1,17 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5'
+    backgroundColor: "#F5F5F5",
   },
 
   content: {
     paddingHorizontal: 20,
-    marginTop: 10
+    marginTop: 10,
   },
 
-  // --- CARDS LADO A LADO ---
+  // ---------- CARDS ----------
   rowCards: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -23,12 +23,12 @@ export const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
 
-  // --- TÍTULO COM ÍCONE ---
+  // ---------- TÍTULO DA SEÇÃO ----------
   sectionWrapper: {
     flexDirection: "row",
     alignItems: "center",
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10,
   },
 
   sectionIcon: {
@@ -37,22 +37,22 @@ export const styles = StyleSheet.create({
 
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: "bold",
+    color: "#000",
   },
 
-  // BOTÃO FILTRAR
+  // ---------- FILTRAR ----------
   filterButton: {
     marginTop: 20,
     marginBottom: 25,
-    backgroundColor: '#4B7BEC',
+    backgroundColor: "#3b3dbf",
     padding: 12,
-    borderRadius: 8
+    borderRadius: 8,
   },
 
   filterButtonText: {
-    color: '#FFF',
-    textAlign: 'center',
-    fontWeight: 'bold'
+    color: "#FFF",
+    textAlign: "center",
+    fontWeight: "bold",
   },
 });

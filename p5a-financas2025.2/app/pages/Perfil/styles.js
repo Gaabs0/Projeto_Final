@@ -3,87 +3,51 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#EEF3FF", // fundo igual ao Registrar
   },
 
-  header: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 20,
-    color: "#000",
-  },
-
-  /* CARD */
-  card: {
-    backgroundColor: "#4d51e5",
-    padding: 25,
-    borderRadius: 12,
+  content: {
+    paddingTop: 40,
     alignItems: "center",
-    marginBottom: 25,
+    width: "100%",
   },
 
-  cardName: {
-    color: "#fff",
-    fontSize: 20,
-    fontWeight: "bold",
-    marginTop: 10,
-  },
-
-  cardEmail: {
-    color: "#fff",
-    fontSize: 14,
-    opacity: 0.9,
-    marginTop: 4,
-  },
-
-  /* LABEL DOS INPUTS */
-  label: {
-    marginTop: 10,
-    fontSize: 14,
-    fontWeight: "bold",
+  welcomeText: {
+    fontSize: 18,
+    fontWeight: "500",
+    marginBottom: 30,
     color: "#000",
   },
 
-  /* INPUT */
-  input: {
-    backgroundColor: "#fff",
-    padding: 14,
-    borderRadius: 10,
-    marginTop: 8,
-    marginBottom: 10,
-    fontSize: 15,
-    borderWidth: 1,
-    borderColor: "#ddd",
+  // BOTÃO REGISTRAR GASTOS
+  registerButton: {
+    backgroundColor: "#3b3dbf",
+    paddingVertical: 12,
+    width: "85%",
+    borderRadius: 8,
+    alignItems: "center",
+    marginBottom: 20,
   },
 
-  /* BOTÃO SALVAR */
-  buttonSave: {
-    backgroundColor: "#4d51e5",
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 10,
-  },
-
-  buttonSaveText: {
-    color: "#fff",
+  registerText: {
+    color: "#FFF",
     fontSize: 16,
     fontWeight: "bold",
-    textAlign: "center",
   },
 
-  /* BOTÃO LOGOUT */
-  buttonLogout: {
-    backgroundColor: "#e64a45",
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 15,
+  // BOTÃO SAIR
+  logoutButton: {
+    borderWidth: 1.5,
+    borderColor: "red",
+    paddingVertical: 12,
+    width: "85%",
+    borderRadius: 8,
+    alignItems: "center",
   },
 
-  buttonLogoutText: {
-    color: "#fff",
+  logoutText: {
+    color: "red",
     fontWeight: "bold",
     fontSize: 16,
-    textAlign: "center",
   },
 });
